@@ -6,16 +6,7 @@ app.use(express.json());
 const connectToMongo = require("./functions/connect");
 connectToMongo();
 const Club = require("./models/club");
-const { findOneAndUpdate } = require("./models/player");
 const Player = require("./models/player");
-
-app.post("/", (req, res) => {
-  //   // TODO: write player to file
-});
-
-// app.get("/:id", (req, res) => {
-//   //   // TODO: read player by id
-// });
 
 app.post("/mongo", async (req, res) => {
   const data = req.body;
@@ -50,7 +41,6 @@ app.post("/mongo/serban", async (req, res) => {
 });
 
 app.get("/mongo/serban/:id", async (req, res) => {
-  const { id } = req.params;
   const player = await Player.findOne({
     place: "B",
   });
